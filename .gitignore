@@ -131,3 +131,4 @@ dmypy.json
 imagedata/
 logs/
 model.png
+combined/
