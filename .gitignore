@@ -128,7 +128,15 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Project spesific folders
 imagedata/
 logs/
-model.png
 combined/
+MRI_12/
+training_checkpoints/
+
+# Data files
+*.tar
+*.gz
+*.png
+*.jpg
