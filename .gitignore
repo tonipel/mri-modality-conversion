@@ -134,6 +134,7 @@ logs/
 combined/
 MRI_12/
 training_checkpoints/
+png2nii/*.nii
 
 # Data files
 *.tar
