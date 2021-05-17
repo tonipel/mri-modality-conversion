@@ -47,7 +47,7 @@ def convert_to_nifti(png_dir, dst_filename, header):
 '''Picks random slices and displays them.
 - Sample code assumed from https://nipy.org/nibabel/coordinate_systems.html'''
 
-'''def show_sample_slices(nii_file):
+def show_sample_slices(nii_file):
     
     """ Function to display row of image slices 
             
@@ -62,7 +62,11 @@ def convert_to_nifti(png_dir, dst_filename, header):
     img_data =  img._dataobj
     data_shape = img_data.shape
     
-    id1, id2, id3 = np.sampl
+    id1, id2, id3 = np.random.uniform(size=3, low=0, high=data_shape[0])
+    
+    slices = [img_data[id1,:,:], img_data[:,id2,:], img_data[:,:,id3]]
+    
     fig, axes = plt.subplots(1, len(slices))
     for i, slice in enumerate(slices):
-        axes[i].imshow(slice.T, cmap="gray", origin="lower")'''
+        axes[i].imshow(slice.T, cmap="gray", origin="lower")
+    plt.show()
