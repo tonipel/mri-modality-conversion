@@ -41,14 +41,10 @@ To make the conversion pipeline more streamlined, the development for a conversi
 
 Functions for running and testing the .png to .nii conversion. Contains two functions:
 
-* ```convert_to_nifti()```
-
-** Takes a stack of .png images in a directory and saves them into a .nii file format
+* ```convert_to_nifti()``` : Takes a stack of .png images in a directory and saves them into a .nii file format
 
 
-* ```show_sample_slices()```
-
-** Used for visually observing the contents of the .nii file. From an input .nii file, displays three randomly chosen slices (one from each 3D axis).
+* ```show_sample_slices()``` : Used for visually observing the contents of the .nii file. From an input .nii file, displays three randomly chosen slices (one from each 3D axis).
 
 
 ### Used external packages
@@ -58,5 +54,5 @@ For production use, these can (and probably should) be incorporated into the env
 ```- numpy=1.19.2 
 - nibabel=3.2.1
 - pillow=8.0.1
-- matplotlib=3.3.2```
+- matplotlib=3.3.2
 
