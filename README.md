@@ -51,7 +51,8 @@ Functions for running and testing the .png to .nii conversion. Contains two func
 
 For production use, these can (and probably should) be incorporated into the environment build.
 
-```- numpy=1.19.2 
+```
+- numpy=1.19.2 
 - nibabel=3.2.1
 - pillow=8.0.1
 - matplotlib=3.3.2
