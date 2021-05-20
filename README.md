@@ -47,6 +47,24 @@ Functions for running and testing the .png to .nii conversion. Contains two func
 * ```show_sample_slices()``` : Used for visually observing the contents of the .nii file. From an input .nii file, displays three randomly chosen slices (one from each 3D axis).
 
 
+#### ```test_conversion.py```
+
+A ```main()```- module for performing test conversions of .png stacks to nifti. It imports the functions from ```png2nii.py``` and implements the conversion after reading the directory path for the .png slices. There is also a commented out block of code (lines 17-19), 
+
+```
+    " (show sample slices) "
+    #sample_nii2 = os.path.join(current_dir, 'png2nii' ,'png2nii_test.nii')
+    #show_sample_slices(sample_nii2)
+```
+
+, which displays random slices from the newly formed .nii file. This can be done by removing the comments on these lines.
+
+
+
+#### ```png2nii.ipynb```
+
+A Jupyter Notebook for playing around/investigating different attributes of Nifti files and conversion techniques. As mentioned before, this feature is still under development, and specific attributes of code chunks are easier to test with .ipynb code cells. The purpose of the notebook is  **not** to implement any final features, but to test out or print code chunks that could be transferred to the conversion module itself.
+
 ### Used external packages
 
 For production use, these can (and probably should) be incorporated into the environment build.
@@ -56,4 +74,15 @@ For production use, these can (and probably should) be incorporated into the env
 - nibabel=3.2.1
 - pillow=8.0.1
 - matplotlib=3.3.2
+```
 
+
+### Problems and points of future improvement
+
+### 1. Pipeline implementation
+
+At the moment, the aspects of our AI pipeline are somewhat disjoint. Ideally, one would want to perform all of the needed processes with one pipeline, one command, and one (command line) interface. Hence, a functionality that is for future development is the *automated* .png to .nii conversion to the model output images. This would help streamline the process.
+
+### 2. Inaccuracies and artefacts in converted Nifti outputs
+
+The tested converted .nii file has some gray area and other inaccurate artefacts some slices were visualized. This is something that could possibly be improved by adjusting the metadata that is inputted for the ```Nifti1Image```-generator during image conversion. For more details, see the test output images in ```png2nii.ipynb```. 
