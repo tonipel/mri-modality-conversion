@@ -24,3 +24,13 @@ Arguments could be for example:
 ```
 docker run mri-modality-conversion python3 /code/pix2pix.py -f data -m convert -c t1_to_t2
 ```
+
+
+
+
+
+
+
+## Under Construction
+
+To make the conversion pipeline more streamlined, the development for a conversion module for .png to Nifti (.nii) format has been started in ```mri-modality-conversion/png2nii```
