@@ -150,3 +150,7 @@ At the moment, the aspects of our AI pipeline are somewhat disjoint. Ideally, on
 ### 2. Inaccuracies and artefacts in converted Nifti outputs
 
 The tested converted .nii file has some gray area and other inaccurate artefacts some slices were visualized. This is something that could possibly be improved by adjusting the metadata that is inputted for the ```Nifti1Image```-generator during image conversion. For more details, see the test output images in ```png2nii.ipynb```. 
+
+
+## License
+[APACHE 2.0](https://www.apache.org/licenses/LICENSE-2.0/)
