@@ -153,4 +153,4 @@ The tested converted .nii file has some gray area and other inaccurate artefacts
 
 
 ## License
-[APACHE 2.0](https://www.apache.org/licenses/LICENSE-2.0/)
+[APACHE 2.0](https://www.apache.org/licenses/LICENSE-2.0)
