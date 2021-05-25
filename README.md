@@ -26,7 +26,71 @@ docker run mri-modality-conversion python3 /code/pix2pix.py -f data -m convert -
 ```
 
 
+## Usage of Pix2Pix image conversion tool
 
+Pix2pix can be used for both training and converting the images based on the saved model.
+
+### Different options to run python code
+
+The different options to run code can be found by using command ```-h``` or ```--help```:
+````
+pix2pix.py -h 
+````
+This outputs following list of options:
+````
+List of options
+
+  -h, --help            
+                        show this help message and exit
+
+  -f INPUT, --file INPUT
+                        Path to input folder
+
+  -m {train,convert}, --mode {train,convert}
+                        Mode to run MRI image converison
+
+  -c {t1_to_t2,t2_to_t1}, --convert {t1_to_t2,t2_to_t1}
+                        Image translation direction
+
+  -o OUTPUT, --output OUTPUT
+                        Path to output folder
+
+  -e EPOCHS, --epochs EPOCHS
+                        Number of epochs for training
+
+  -s SAVE, --save SAVE  
+                        Path to save model
+
+  -l LOAD, --load LOAD  
+                        Load saved model from custom directory
+
+  -cm {rgb,bw}, --colormode {rgb,bw}
+                        Color mode of images, either RGB (rgb) or black white (bw)
+````
+
+### How to train network:
+
+Train the model to convert T1 to T2 image
+````
+pix2pix.py -f {path_training_data} -m train -c t1_to_t2 -e {number_of_epochs} -s {path_save_model}
+````
+
+Train the model to convert T2 to T1 image
+````
+pix2pix.py -f {path_training_data} -m train -c t2_to_t1 -e {number_of_epochs} -s {path_save_model}
+````
+
+### How to convert images
+
+Convert colored T1 image to colored T2 image by using saved model
+````
+pix2pix.py -f {path_convert_data} -m convert -c t1_to_t2 -o {path_converted_T2_images} -l {path_saved_model} -cm rgb
+````
+
+Convert black and white T2 image to balck and white T1 image by using saved model
+````
+pix2pix.py -f {path_convert_data} -m convert -c t2_to_t1 -o {path_converted_T1_images} -l {path_saved_model} -cm bw
+````
 
 
 
