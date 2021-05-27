@@ -551,7 +551,7 @@ class Pix2pix(tf.Module):
 
         return gen_total_loss, disc_loss
 
-    def train(self, dataset, checkpoint_pr, gen_path, disc_path):
+    def train(self, dataset, checkpoint_pr):
         '''
         Train the GAN
         '''
@@ -568,12 +568,6 @@ class Pix2pix(tf.Module):
             t_sec = time.time()-start_time
             t_min, t_sec = divmod(t_sec, 60)
             t_hour, t_min = divmod(t_min, 60)
-
-            gen_loss_file = open(gen_path, 'a')
-            gen_loss_file.write(f'{gen_loss}\n')
-
-            disc_loss_file = open(disc_path, 'a')
-            disc_loss_file.write(f'{disc_loss}\n')
 
             print(f'--- Epoch {epoch+1} ---')
             print(
@@ -637,13 +631,9 @@ def main():
         train_dataset = train_dataset.shuffle(BUFFER_SIZE)
         train_dataset = train_dataset.batch(BATCH_SIZE)
 
-        gen_loss_path = './gen_loss_copy.txt'
-        disc_loss_path = './disc_loss_copy.txt'
-
         model = Pix2pix(int(args.epochs))
         checkpoint_pr = get_checkpoint_prefix()
-        model.train(train_dataset, checkpoint_pr,
-                    gen_loss_path, disc_loss_path)
+        model.train(train_dataset, checkpoint_pr)
 
         if args.convert == 't1_to_t2':
             if not os.path.isdir(args.save):
