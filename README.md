@@ -1,4 +1,8 @@
-# mri-modality-conversion
+# MRI modality conversion
+
+## Introduction
+
+This project is used convert brain MRI images from T1-weighted images to T2-weighted images, and vice versa. The used model is an adapted version from Tensorflow [Pix2Pix](https://www.tensorflow.org/tutorials/generative/pix2pix) model. Trained model is capable of converting MRI images from one modality to another, and outputting completely syntethic images, which have a good accuracy compared to the expected output. This project can be used to train a new model with a training dataset, or it can be used to convert images with an existing model.
 
 ## Docker setup
 
