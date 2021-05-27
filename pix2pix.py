@@ -498,6 +498,13 @@ class Pix2pix(tf.Module):
     def discriminator_loss(self, disc_target_output, disc_generated_output):
         '''
         GAN Discriminator loss function
+
+        Args:
+            disc_target_output: target output from discriminator
+            disc_generated_output: generated output
+
+        Returns:
+            Total discriminator loss
         '''
 
         target_loss = self.loss_object(tf.ones_like(
@@ -511,6 +518,13 @@ class Pix2pix(tf.Module):
     def generator_loss(self, disc_generated_output, gen_output, target):
         '''
         GAN Generator loss function
+
+        Args:
+            disc_generated_output: generated output from discriminator
+            gen_output: generated output from generator
+
+        Returns:
+            Total generator loss, GAN loss, and L1 loss
         '''
 
         gan_loss = self.loss_object(tf.ones_like(
@@ -524,6 +538,13 @@ class Pix2pix(tf.Module):
     def train_step(self, input_image, target_image):
         '''
         Training step of GAN
+
+        Args:
+            input_image: single T1 or T2 image
+            target_image: single T1 or T2 image
+
+        Returns:
+            generator and discriminator losses
         '''
 
         with tf.GradientTape() as gen_tape, tf.GradientTape() as disc_tape:
@@ -554,6 +575,10 @@ class Pix2pix(tf.Module):
     def train(self, dataset, checkpoint_pr):
         '''
         Train the GAN
+
+        Args:
+            dataset: dataset of training images
+            checkpoint_pr: checkpoint file to write checkpoints during training
         '''
 
         print('Training started...')
@@ -576,14 +601,18 @@ class Pix2pix(tf.Module):
         print('Training finished!')
 
 
-def save_generated_images(model, test_input, name):
+def save_generated_images(model, dataset, name):
     '''
     Save synthetic images to some folder
+
+    Args:
+        model: saved model
+        dataset: dataset, which is wanted to convert
+        name: name of folder where to save converted images
     '''
 
-    prediction = model(test_input, training=True)
+    prediction = model(dataset, training=True)
     image = (prediction[0]*0.5+0.5).numpy()
-    #image = np.dot(image[:,:,:3], [0.2989, 0.5870, 0.1140])
     image = np.average(image, axis=-1)
     plt.imsave(name, image, cmap=plt.cm.gray, vmin=0, vmax=1)
     # tf.keras.preprocessing.image.save_img(name, image) #tf.image.rgb_to_grayscale()
